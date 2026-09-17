@@ -1,0 +1,184 @@
+/* Goth Skin — Dark by Nature
+   One stylesheet for the whole site. Two colours, two typefaces, no accent. */
+
+:root{
+  --bone:#F7F5F2;
+  --bone-2:#EFECE7;
+  --ink:#0E1011;
+  --ink-2:#403F3D;
+  --muted:#6E6C68;
+  --faint:#9E9B95;
+  --rule:#DCD7CF;
+  --gutter:24px;
+  --measure:62ch;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bone);
+  color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-inline:var(--gutter);
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--muted)}
+a:focus-visible,button:focus-visible,input:focus-visible,
+textarea:focus-visible,select:focus-visible{
+  outline:2px solid var(--ink);outline-offset:3px
+}
+.wrap{max-width:1040px;margin:0 auto}
+.narrow{max-width:940px;margin:0 auto}
+.bod{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-weight:500}
+.lab{
+  font-size:10.5px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);margin:0;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bone);
+  padding:12px 18px;z-index:99;
+}
+.skip:focus{left:0}
+
+/* ---------- nav ---------- */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-block:24px;border-bottom:1px solid var(--rule);flex-wrap:wrap;
+}
+.nav .mark{
+  font-family:"Bodoni Moda",Didot,serif;font-weight:500;
+  font-size:17px;letter-spacing:.24em;
+}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav a{
+  font-size:11px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;
+  padding-bottom:3px;border-bottom:1px solid transparent;
+}
+.nav a[aria-current="page"]{border-bottom-color:var(--ink)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-weight:500;margin:0}
+h1{font-size:clamp(2.2rem,7vw,4rem);line-height:.98;letter-spacing:.01em;text-wrap:balance}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.14;text-wrap:balance}
+h3{font-size:clamp(1.15rem,2.6vw,1.45rem);line-height:1.2}
+p{margin:0 0 18px;color:var(--ink-2);max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink);font-weight:600}
+.lead{
+  font-family:"Bodoni Moda",Didot,serif;
+  font-size:clamp(1.15rem,2.6vw,1.5rem);line-height:1.42;color:var(--ink);
+}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(44px,6vw,66px);border-top:1px solid var(--rule)}
+section.plain{border-top:none}
+.grid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:760px){.grid{grid-template-columns:1fr;gap:14px}}
+.body{max-width:var(--measure)}
+
+ul.marks{margin:0;padding:0;list-style:none;max-width:var(--measure)}
+ul.marks li{position:relative;padding-left:22px;margin-bottom:14px;color:var(--ink-2)}
+ul.marks li:last-child{margin-bottom:0}
+ul.marks li::before{content:"";position:absolute;left:0;top:.75em;width:9px;height:1px;background:var(--ink)}
+ul.marks li b{color:var(--ink);font-weight:600}
+
+/* ---------- manifesto ---------- */
+.manifesto{
+  padding-block:clamp(64px,11vw,128px) clamp(64px,11vw,120px);
+  display:flex;flex-direction:column;gap:clamp(24px,4vw,42px);
+  max-width:min(760px,100%);margin-inline:auto;
+}
+.manifesto p{
+  font-family:"Bodoni Moda",Didot,serif;
+  font-size:clamp(1.5rem,5vw,2.9rem);
+  line-height:1.18;font-weight:400;margin:0;max-width:none;
+  color:var(--ink);text-wrap:balance;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--bone);
+  font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  padding:17px 32px;min-height:48px;border:1px solid var(--ink);cursor:pointer;
+}
+.btn:hover{background:#2E2D2A;color:var(--bone)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bone)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- portrait grid ---------- */
+.portraits{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:clamp(20px,3vw,40px);
+}
+.portrait{display:flex;flex-direction:column}
+.portrait .frame{
+  aspect-ratio:3/4;background:var(--bone-2);
+  display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.portrait .rule{height:1px;background:var(--ink)}
+.portrait .nm{font-family:"Bodoni Moda",Didot,serif;font-size:1.55rem;margin-top:15px;line-height:1.1}
+.portrait .meta{
+  font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-top:7px;
+}
+.portrait.empty .frame{border:1px dashed #C8C2B9}
+.portrait.empty .rule{background:var(--rule)}
+.portrait.empty .nm{color:var(--faint);font-size:1.15rem;letter-spacing:.01em}
+.portrait.empty .meta{color:var(--faint)}
+
+/* ---------- forms ---------- */
+form{max-width:640px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+.field label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.field .hint{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0;max-width:none}
+input[type=text],input[type=email],input[type=url],textarea,select{
+  font:inherit;font-size:15.5px;color:var(--ink);background:var(--bone);
+  border:1px solid var(--ink);padding:13px 15px;border-radius:0;width:100%;
+}
+textarea{min-height:130px;resize:vertical}
+.check{display:flex;gap:11px;align-items:flex-start;margin-bottom:22px}
+.check input{margin-top:5px;flex-shrink:0;width:16px;height:16px;accent-color:var(--ink)}
+.check label{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+
+/* ---------- panels ---------- */
+.panel{background:var(--bone-2);border:1px solid var(--rule);padding:clamp(22px,4vw,30px)}
+.panel .note{margin:20px 0 0;font-size:14.5px;color:var(--muted);line-height:1.6}
+.pair{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;
+  margin:6px 0 22px;border-top:1px solid var(--rule);border-left:1px solid var(--rule);
+}
+.pair > div{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 22px}
+.pair h3{margin:0 0 10px;font-family:"Archivo",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pair p{margin:0;font-size:15px;line-height:1.6}
+
+/* ---------- join ---------- */
+.join{
+  border-top:1px solid var(--rule);padding-block:clamp(48px,7vw,72px);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:end;
+}
+@media (max-width:820px){.join{grid-template-columns:1fr;gap:26px}}
+
+/* ---------- cta ---------- */
+.cta{padding-block:clamp(56px,8vw,88px);border-top:1px solid var(--ink);text-align:center}
+.cta p{margin-inline:auto;margin-top:22px;margin-bottom:30px}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--rule);padding-block:32px 56px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+footer a{color:var(--muted)}
+footer .links{display:flex;gap:22px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

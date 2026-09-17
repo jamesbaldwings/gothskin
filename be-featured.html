@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Be Featured — Goth Skin</title>
+<meta name="description" content="Apply to be photographed by Goth Skin. You do not need to be a model, an influencer or known to anyone.">
+<link rel="canonical" href="https://gothskin.com/be-featured.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Be Featured — Goth Skin">
+<meta property="og:description" content="Apply to be photographed by Goth Skin. You do not need to be a model, an influencer or known to anyone.">
+<meta property="og:image" content="https://gothskin.com/assets/og.png">
+<meta property="og:url" content="https://gothskin.com/be-featured.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow,noai,noimageai">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/favicon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="nav">
+  <a class="mark" href="index.html">GOTH SKIN</a>
+  <ul><li><a href="portraits.html">Portraits</a></li><li><a href="about.html">The Idea</a></li><li><a href="be-featured.html" aria-current="page">Be Featured</a></li></ul>
+</nav>
+<main id="main">
+
+<section class="plain" style="padding-block:clamp(48px,7vw,76px) clamp(30px,4vw,44px)">
+  <h1 class="bod">Be Featured</h1>
+  <p class="lead" style="margin-top:22px">You do not need to be a model, an influencer, goth or known to anyone at all. Interesting people and honest stories are the whole requirement.</p>
+</section>
+
+<section>
+  <div class="grid">
+    <p class="lab">How it works</p>
+    <div class="body">
+      <ul class="marks">
+        <li><b>You email us.</b> Use the form below, which opens your mail app with everything laid out. We read every one.</li>
+        <li><b>We talk first.</b> Before any camera comes out, we agree what gets published, what stays private and what we never mention.</li>
+        <li><b>Then we shoot.</b> Your own clothes. Your own face. An afternoon, not a full day.</li>
+        <li><b>You can change your mind.</b> At any point, including after it is published. No reason required.</li>
+      </ul>
+      <p style="margin-top:22px"><strong>Do not send photographs in your first email.</strong> Send links or a few words instead. We will ask for images once we have spoken, so that nothing of yours is sitting in an inbox before you have decided anything.</p>
+      <p>Eighteen and over only, for now.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="grid">
+    <p class="lab">Apply</p>
+    <div class="body">
+      <form id="apply">
+        <div class="field">
+          <label for="name">Name, or the name you use publicly</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="where">Where you are</label>
+          <input type="text" id="where" name="where" placeholder="City and state, or just the region">
+          <p class="hint">We only publish what you tell us to publish. You can give a region and nothing more.</p>
+        </div>
+        <div class="field">
+          <label for="links">A link or two, if you have them</label>
+          <input type="text" id="links" name="links" placeholder="Instagram, a portfolio, anything at all">
+          <p class="hint">Optional. Plenty of the most interesting people have no links.</p>
+        </div>
+        <div class="field">
+          <label for="style">How you would describe how you look and dress</label>
+          <textarea id="style" name="style"></textarea>
+        </div>
+        <div class="field">
+          <label for="story">Something about you</label>
+          <textarea id="story" name="story" placeholder="What you listen to, what you make, what you have worn for ten years, what people get wrong about you. Anything true."></textarea>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="age" name="age" required>
+          <label for="age">I am eighteen or over.</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I understand Goth Skin will contact me by email about this, and that nothing is agreed and nothing is published until I say so in writing.</label>
+        </div>
+        <button class="btn" type="submit">Send application</button>
+        <p class="hint" style="margin-top:16px">This opens your email app with your answers filled in. Nothing is stored on this website.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('apply').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var get = function (id) { return (f.querySelector('#' + id) || {}).value || ''; };
+  var body = [
+    'Name: ' + get('name'),
+    'Where: ' + get('where'),
+    'Links: ' + get('links'),
+    '',
+    'Style:',
+    get('style'),
+    '',
+    'About me:',
+    get('story'),
+    '',
+    'I confirm I am 18 or over.'
+  ].join('\n');
+  window.location.href = 'mailto:hello@gothskin.com'
+    + '?subject=' + encodeURIComponent('Be Featured: ' + get('name'))
+    + '&body=' + encodeURIComponent(body);
+});
+</script>
+</main>
+<div class="join">
+  <div>
+    <h2>Join Goth Skin</h2>
+    <p>New portraits, new writing and studio dates, before they go anywhere else.</p>
+  </div>
+  <div class="btns">
+    <a class="btn" href="mailto:hello@gothskin.com?subject=Join%20Goth%20Skin">Join by email</a>
+  </div>
+</div>
+<footer>
+  <span class="bod" style="font-size:13px;letter-spacing:.22em;text-transform:none;color:var(--ink)">GOTH SKIN</span>
+  <span class="links">
+    <a href="consent.html">Consent and your rights</a>
+    <a href="mailto:hello@gothskin.com?subject=Removal%20request">Request removal</a>
+    <a href="mailto:hello@gothskin.com">Contact</a>
+  </span>
+</footer>
+</div>
+</body>
+</html>
