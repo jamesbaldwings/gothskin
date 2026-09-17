@@ -35,6 +35,12 @@ textarea:focus-visible,select:focus-visible{
 .wrap{max-width:1040px;margin:0 auto}
 .narrow{max-width:940px;margin:0 auto}
 .bod{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-weight:500}
+
+/* Bodoni Moda is a variable font with an optical-size axis. Left on auto, the
+   browser swaps to the display cut at large sizes, which shears the serifs off
+   and thins the strokes to hairlines. Pinning it keeps the text cut, which is
+   far more legible and matches the logo artwork. */
+.bod,h1,h2,h3,.manifesto p,.nav .mark,.wm{font-optical-sizing:none}
 .lab{
   font-size:10.5px;font-weight:600;letter-spacing:.24em;
   text-transform:uppercase;color:var(--muted);margin:0;
@@ -70,7 +76,7 @@ p{margin:0 0 18px;color:var(--ink-2);max-width:var(--measure)}
 p:last-child{margin-bottom:0}
 strong{color:var(--ink);font-weight:600}
 .lead{
-  font-family:"Bodoni Moda",Didot,serif;
+  font-family:"Bodoni Moda",Didot,serif;font-optical-sizing:none;
   font-size:clamp(1.15rem,2.6vw,1.5rem);line-height:1.42;color:var(--ink);
 }
 
@@ -95,8 +101,8 @@ ul.marks li b{color:var(--ink);font-weight:600}
 }
 .manifesto p{
   font-family:"Bodoni Moda",Didot,serif;
-  font-size:clamp(1.5rem,5vw,2.9rem);
-  line-height:1.18;font-weight:400;margin:0;max-width:none;
+  font-size:clamp(1.5rem,5vw,2.8rem);
+  line-height:1.26;font-weight:500;margin:0;max-width:none;
   color:var(--ink);text-wrap:balance;
 }
 
