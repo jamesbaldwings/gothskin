@@ -87,32 +87,89 @@
         <button class="btn" type="submit">Send application</button>
         <p class="hint" style="margin-top:16px">This opens your email app with your answers filled in. Nothing is stored on this website.</p>
       </form>
+
+      <div class="panel" id="fallback" hidden style="margin-top:28px">
+        <p class="lab" style="margin-bottom:12px">Your application, ready to send</p>
+        <p style="font-size:15px">If your mail app did not open, copy the message below and email it to
+        <a href="mailto:hello@gothskin.com" style="border-bottom:1px solid var(--ink)">hello@gothskin.com</a>.</p>
+        <label for="composed" style="position:absolute;left:-9999px">Your application text</label>
+        <textarea id="composed" readonly style="margin:14px 0;min-height:200px;background:var(--bone)"></textarea>
+        <div class="btns">
+          <button class="btn ghost" type="button" id="copybtn">Copy the message</button>
+          <a class="btn ghost" id="mailagain" href="mailto:hello@gothskin.com">Open mail app again</a>
+        </div>
+        <p class="note" id="copied" hidden>Copied. Paste it into a new email to hello@gothskin.com.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-document.getElementById('apply').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var f = e.target;
-  var get = function (id) { return (f.querySelector('#' + id) || {}).value || ''; };
-  var body = [
-    'Name: ' + get('name'),
-    'Where: ' + get('where'),
-    'Links: ' + get('links'),
-    '',
-    'Style:',
-    get('style'),
-    '',
-    'About me:',
-    get('story'),
-    '',
-    'I confirm I am 18 or over.'
-  ].join('\n');
-  window.location.href = 'mailto:hello@gothskin.com'
-    + '?subject=' + encodeURIComponent('Be Featured: ' + get('name'))
-    + '&body=' + encodeURIComponent(body);
-});
+(function () {
+  var form = document.getElementById('apply');
+  var panel = document.getElementById('fallback');
+  var composed = document.getElementById('composed');
+  var copybtn = document.getElementById('copybtn');
+  var copied = document.getElementById('copied');
+  var mailagain = document.getElementById('mailagain');
+
+  function val(id) {
+    var el = form.querySelector('#' + id);
+    return el ? el.value.trim() : '';
+  }
+
+  function buildBody() {
+    return [
+      'Name: ' + val('name'),
+      'Where: ' + val('where'),
+      'Links: ' + val('links'),
+      '',
+      'Style:',
+      val('style'),
+      '',
+      'About me:',
+      val('story'),
+      '',
+      'I confirm I am 18 or over.',
+      'I understand nothing is agreed and nothing is published until I say so in writing.'
+    ].join('\n');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var body = buildBody();
+    var subject = 'Be Featured: ' + (val('name') || 'application');
+    var href = 'mailto:hello@gothskin.com?subject=' + encodeURIComponent(subject)
+             + '&body=' + encodeURIComponent(body);
+
+    // Always show the message on the page. A mailto only does something when the
+    // visitor has a mail app registered, and plenty of people do not.
+    composed.value = 'To: hello@gothskin.com\nSubject: ' + subject + '\n\n' + body;
+    mailagain.setAttribute('href', href);
+    panel.hidden = false;
+    copied.hidden = true;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try { window.location.href = href; } catch (err) { /* no mail handler */ }
+  });
+
+  copybtn.addEventListener('click', function () {
+    composed.select();
+    composed.setSelectionRange(0, composed.value.length);
+    var done = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(composed.value).then(function () {
+        copied.hidden = false;
+      }, function () {
+        try { done = document.execCommand('copy'); } catch (e) {}
+        copied.hidden = !done;
+      });
+    } else {
+      try { done = document.execCommand('copy'); } catch (e) {}
+      copied.hidden = !done;
+    }
+  });
+}());
 </script>
 </main>
 <div class="join">
